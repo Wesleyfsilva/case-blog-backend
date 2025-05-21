@@ -1,3 +1,4 @@
+// src/routes/ArticleRoutes.ts
 import express from 'express';
 import { criar, listar, atualizar, excluir } from '../controllers/ArticleController';
 import { autenticarToken } from '../middlewares/AuthMiddleware';

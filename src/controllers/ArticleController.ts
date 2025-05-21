@@ -17,6 +17,7 @@ export const criar = async (req: Request, res: Response) => {
 
     res.status(201).json({ mensagem: 'Artigo criado com sucesso.' });
   } catch (error) {
+    console.error('Erro no controller:', error);
     res.status(500).json({ erro: 'Erro ao criar artigo.' });
   }
 };

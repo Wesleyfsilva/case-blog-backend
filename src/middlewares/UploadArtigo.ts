@@ -1,6 +1,7 @@
 import multer from 'multer';
 import path from 'path';
 
+// Define o destino onde os arquivos serão salvos
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, path.resolve(__dirname, '../uploads/artigos'));
@@ -10,4 +11,4 @@ const storage = multer.diskStorage({
   },
 });
 
-export const upload = multer({ storage });
+export const uploadArtigo = multer({ storage });

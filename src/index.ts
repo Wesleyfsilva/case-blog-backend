@@ -5,7 +5,7 @@ import path from 'path';
 
 import { db } from './config/db';
 import userRoutes from './routes/UserRoutes';
-import articleRoutes from './routes/ArticleModel';
+import articleRoutes from './routes/ArticleRoutes';
 
 dotenv.config();
 

@@ -1,20 +1,19 @@
-import { db } from '../config/db';
+import pool from '../config/db';
 
 interface NovoUsuario {
   nome: string;
   email: string;
   senha: string;
+  avatar?: string;
 }
 
-export const criarUsuario = async (usuario: NovoUsuario) => {
-  const { nome, email, senha } = usuario;
-  const sql = 'INSERT INTO users (nome, email, senha) VALUES (?, ?, ?)';
-  const [result] = await db.execute(sql, [nome, email, senha]);
-  return result;
+export const criarUsuario = async ({ nome, email, senha, avatar }: NovoUsuario) => {
+  const sql = 'INSERT INTO users (nome, email, senha, avatar) VALUES (?, ?, ?, ?)';
+  await pool.query(sql, [nome, email, senha, avatar]);
 };
 
 export const buscarPorEmail = async (email: string) => {
-  const sql = 'SELECT * FROM users WHERE email = ? LIMIT 1';
-  const [rows] = await db.execute(sql, [email]);
-  return Array.isArray(rows) ? rows[0] : null;
+  const [rows] = await pool.query('SELECT * FROM users WHERE email = ?', [email]);
+  const resultado = Array.isArray(rows) ? rows[0] : null;
+  return resultado;
 };
